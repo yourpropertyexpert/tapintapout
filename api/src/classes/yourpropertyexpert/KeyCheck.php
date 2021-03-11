@@ -14,6 +14,7 @@ namespace yourpropertyexpert;
 class KeyCheck
 {
     private $key;
+    private const DUMMYKEY = 123;
 
     /**
      * Constructor, sets the key private
@@ -25,7 +26,7 @@ class KeyCheck
 
     public function checkKey()
     {
-        if ($this->key == 123) {
+        if ($this->key == self::DUMMYKEY) {
             return true;
         }
         return false;
