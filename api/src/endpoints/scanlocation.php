@@ -9,7 +9,7 @@ $return = 200; // all good
 $data = $user;
 $data["success"] = true;
 
-if(empty($_REQUEST["newlocation"])) {
+if (empty($_REQUEST["newlocation"])) {
     $data["error"] = "Location not passed";
     $data["success"] = false;
     new Output(422, $data);

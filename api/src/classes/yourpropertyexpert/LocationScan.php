@@ -32,7 +32,10 @@ class LocationScan
         $stmt->bind_param("ss", $location, $this->userid);
         $stmt->execute();
         if ($this->conn->affected_rows != 1) {
-            return ["success" => false, "error" => "Scanned twice at same location or user not set in locations table?"];
+            return [
+                "success" => false,
+                "error" => "Scanned twice at same location or user not set in locations table?"
+            ];
         }
         return ["success" => true, "newlocation" => $location];
     }
