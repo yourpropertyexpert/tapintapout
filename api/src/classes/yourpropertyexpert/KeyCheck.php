@@ -15,7 +15,6 @@ class KeyCheck
 {
     private $key;
     private $conn;
-    private const DUMMYKEY = 123;
 
     /**
      * Constructor, sets the key private
