@@ -9,14 +9,7 @@ $return = 200; // all good
 $data = $user;
 $data["success"] = true;
 
-if(!isset($_REQUEST["newlocation"])) {
-    $data["error"] = "Location not passed";
-    $data["success"] = false;
-    new Output(422, $data);
-    exit();
-}
-
-if($_REQUEST["newlocation"] == "") {
+if(empty($_REQUEST["newlocation"])) {
     $data["error"] = "Location not passed";
     $data["success"] = false;
     new Output(422, $data);
@@ -26,10 +19,9 @@ if($_REQUEST["newlocation"] == "") {
 $newlocation = $_REQUEST["newlocation"];
 error_log("Setting location to $newlocation");
 
-$locationobject = new LocationScan($user["user"]);
+$locationobject = new LocationScan($user["userid"]);
 $objectresult = $locationobject->scanLocation($newlocation);
 
-$data["success"] = $objectresult["success"];
 foreach (["success", "error", "newlocation"] as $thisone) {
     if (array_key_exists($thisone, $objectresult)) {
         $data[$thisone] = $objectresult[$thisone];

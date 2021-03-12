@@ -13,7 +13,7 @@ namespace yourpropertyexpert;
  */
 class LocationScan
 {
-    private $key;
+    private $userid;
     private $conn;
 
     /**
@@ -27,13 +27,12 @@ class LocationScan
 
     public function scanLocation($location)
     {
-
-        $sql = "UPDATE currentlocation SET location = ? WHERE user = ?";
+        $sql = "UPDATE currentlocation SET location = ? WHERE userid = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ss", $location, $this->userid);
         $stmt->execute();
         if ($this->conn->affected_rows != 1) {
-            return ["success" => false, "error" => "Scanned twice at same location?"];
+            return ["success" => false, "error" => "Scanned twice at same location or user not set in locations table?"];
         }
         return ["success" => true, "newlocation" => $location];
     }
