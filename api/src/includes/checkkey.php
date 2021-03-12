@@ -6,8 +6,8 @@
 
 namespace yourpropertyexpert;
 
-CONST HTTP_UNAUTHORISED=401;
-CONST HTTP_FORBIDDEN=403;
+const HTTP_UNAUTHORISED = 401;
+const HTTP_FORBIDDEN = 403;
 
 
 if (!array_key_exists("userkey", $_REQUEST)) {

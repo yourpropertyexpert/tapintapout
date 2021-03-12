@@ -2,8 +2,8 @@
 
 namespace yourpropertyexpert;
 
-CONST HTTP_UNPROCESSABLE_ENTITY=422;
-CONST HTTP_OK=200;
+const HTTP_UNPROCESSABLE_ENTITY = 422;
+const HTTP_OK = 200;
 
 require_once("../includes/autoloaders.php");
 $user = require_once("../includes/checkkey.php");
