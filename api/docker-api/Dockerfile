@@ -7,7 +7,6 @@ ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/mas
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli.so
 
-
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt install zip unzip

@@ -14,6 +14,7 @@ namespace yourpropertyexpert;
 class KeyCheck
 {
     private $key;
+    private $conn;
     private const DUMMYKEY = 123;
 
     /**
@@ -22,13 +23,22 @@ class KeyCheck
     public function __construct($key)
     {
         $this->key = $key;
+        $this->conn = new DB();
     }
 
     public function checkKey()
     {
-        if ($this->key == self::DUMMYKEY) {
-            return true;
+
+        $sql = "SELECT * FROM userkeys WHERE userkey = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $this->key);
+        $stmt->execute();
+        $rawdata = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $return = ["authenticated" => false];
+        if (count($rawdata) > 0) {
+            $return = $rawdata[0];
+            $return["authenticated"] = true;
         }
-        return false;
+        return $return;
     }
 }
