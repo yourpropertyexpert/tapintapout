@@ -2,17 +2,20 @@
 
 namespace yourpropertyexpert;
 
+CONST HTTP_UNPROCESSABLE_ENTITY=422;
+CONST HTTP_OK=200;
+
 require_once("../includes/autoloaders.php");
 $user = require_once("../includes/checkkey.php");
 
-$return = 200; // all good
+$return = HTTP_OK; // all good
 $data = $user;
 $data["success"] = true;
 
 if (empty($_REQUEST["newlocation"])) {
     $data["error"] = "Location not passed";
     $data["success"] = false;
-    new Output(422, $data);
+    new Output(HTTP_UNPROCESSABLE_ENTITY, $data);
     exit();
 }
 
