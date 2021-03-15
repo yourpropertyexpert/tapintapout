@@ -12,7 +12,7 @@ $return = HTTP_OK; // all good
 $data = $user;
 $data["success"] = true;
 
-$userobject = new User($user["userkey"]);
+$userobject = new UserFromKey($user["userkey"]);
 $userinfo = $userobject->getMyInfo();
 
 $data["firstname"] = $userinfo["firstname"];

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * NewUser class
+ * UserFromKey class
  *
  * @copyright Mark Harrison Ltd 2021, used under licence
  */
@@ -11,7 +11,7 @@ namespace yourpropertyexpert;
 /**
  * User class
  */
-class User
+class UserFromKey
 {
     private $key;
     private $conn;
