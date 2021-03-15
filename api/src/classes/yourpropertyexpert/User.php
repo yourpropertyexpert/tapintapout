@@ -52,20 +52,4 @@ class User
         }
         return $return;
     }
-
-    private function addStartLocation($userid)
-    {
-        $sql = "INSERT INTO currentlocation (userid, location) VALUES(?, 'untracked')";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $userid);
-        $stmt->execute();
-        if ($stmt->error) {
-            $error = "Error inserting default location: " . $stmt->errno . " - " . $stmt->error;
-            return [
-                "success" => false,
-                "error" => $error
-            ];
-        }
-        return ["success" => true, "userid" => $userid];
-    }
 }
