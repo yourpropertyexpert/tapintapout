@@ -36,7 +36,7 @@ class NewUser
         if ($stmt->error) {
             return [
                 "success" => false,
-                "error" => "Error creating users entry: " . $stmt->errno." - " . $stmt->error;
+                "error" => "Error creating users entry: " . $stmt->errno . " - " . $stmt->error;
             ];
         }
         return $this->addStartLocation($stmt->insert_id);
@@ -51,7 +51,7 @@ class NewUser
         if ($stmt->error) {
             return [
                 "success" => false,
-                "error" => "Error inserting default location: " . $stmt->errno." - " . $stmt->error
+                "error" => "Error inserting default location: " . $stmt->errno . " - " . $stmt->error
             ];
         }
         return ["success" => true, "userid" => $userid];
