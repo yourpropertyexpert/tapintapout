@@ -27,7 +27,6 @@ class KeyCheck
 
     public function checkKey()
     {
-
         $sql = "SELECT * FROM userkeys WHERE userkey = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $this->key);
