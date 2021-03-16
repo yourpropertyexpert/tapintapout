@@ -26,6 +26,7 @@ CREATE TABLE users (
     firstname varchar(255),
     familyname varchar(255),
     email varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
     UNIQUE (email),
     PRIMARY KEY (userid)
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;

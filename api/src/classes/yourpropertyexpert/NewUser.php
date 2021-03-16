@@ -27,11 +27,11 @@ class NewUser
      * Set up a new user
      * status will always be "UNCONFIRMED" (set by DB Table definition)
      */
-    public function addUser($firstname, $familyname, $email)
+    public function addUser($firstname, $familyname, $email, $pw = "dummy")
     {
-        $sql = "INSERT INTO users (firstname, familyname, email) VALUES(?, ?, ?)";
+        $sql = "INSERT INTO users (firstname, familyname, email, password) VALUES(?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("sss", $firstname, $familyname, $email);
+        $stmt->bind_param("ssss", $firstname, $familyname, $email, $pw);
         $stmt->execute();
         if ($stmt->error) {
             $error = "Error inserting default location: " . $stmt->errno . " - " . $stmt->error;
